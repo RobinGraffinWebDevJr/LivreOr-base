@@ -2,12 +2,13 @@ let express = require('express')
 let app = express()
 let bodyParser = require('body-parser')
 let session = require('express-session')
-const { response } = require('express')
 
-// Moteur de templates
+process.env.NODE_ENV="production";
+
+// Moteur de template
 app.set('view engine', 'ejs')
 
-// Midlleware
+// Middleware
 app.use('/assets', express.static('public'))
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())

@@ -1,8 +1,6 @@
 let connection = require('../config/db')
 let moment = require('../config/moment')
 
-
-
 class Message {
 
     constructor (row) {
@@ -34,6 +32,14 @@ class Message {
             cb(rows.map((row) => new Message(row)))
         })
     }
+    
+    static find (id, cb) {
+        connection.query('SELECT * FROM messages WHERE id = ? LIMIT 1', [id], (err, rows) => {
+            if (err) throw err
+            cb(new Message(rows[0]))
+        })
+    }
+    
 }
 
 module.exports = Message
