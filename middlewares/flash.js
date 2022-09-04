@@ -12,6 +12,5 @@ module.exports = function (request, response, next) {
       }
       request.session.flash[type] = content
     }
-  
     next()
   }
